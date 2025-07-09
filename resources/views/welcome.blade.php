@@ -14,72 +14,72 @@
 
     <main class="main">
         <!--slider-two-->
-      <div class="slider slider--two">
-    <div class="swiper slider__top">
-        <div class="swiper-wrapper">
-            @foreach ($posts as $post)
-                <div class="slider__item swiper-slide" style="background-image: url('{{ asset('storage/' . $post->featured_image) }}');">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-xl-7 col-lg-9 col-md-12">
-                                <div class="slider__item-content">
-                                    <a href="#" class="category">
-                                        {{ $post->categories->first()->name ?? 'Sin categoría' }}
-                                    </a>
-                                    <h1 class="slider__title">
-                                        <a href="#" class="slider__title-link">{{ $post->title }}</a>
-                                    </h1>
-                                    <p class="slider__exerpt">{{ Str::limit($post->excerpt, 120) }}</p>
-                                    <ul class="slider__meta list-inline">
-                                        <li class="slider__meta-item">
-                                            <a href="#" class="slider__meta-link">
-                                                <img src="{{ asset('storage/' . ($post->author->profile_image ?? 'default.jpg')) }}" alt="" class="slider__meta-img">
-                                            </a>
-                                        </li>
-                                        <li class="slider__meta-item">
-                                            <a href="#" class="slider__meta-link">{{ $post->author->name ?? 'Autor desconocido' }}</a>
-                                        </li>
-                                        <li class="slider__meta-item">
-                                            <span class="dot"></span> {{ $post->created_at->format('F d, Y') }}
-                                        </li>
-                                        <li class="slider__meta-item">
-                                            <span class="dot"></span> {{ $post->read_time ?? '5' }} min Read
-                                        </li>
-                                        <li class="slider__meta-item">
-                                            <span class="dot"></span> {{ $post->comments_count ?? 0 }} comments
-                                        </li>
-                                    </ul>
+       <div class="slider slider--two">
+        <div class="swiper slider__top">
+            <div class="swiper-wrapper">
+                @foreach ($posts as $post)
+                    <div class="slider__item swiper-slide" style="background-image: url('{{ asset('storage/' . $post->featured_image) }}');">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-xl-7 col-lg-9 col-md-12">
+                                    <div class="slider__item-content">
+
+                                        <!-- Mostrar todas las categorías -->
+                                        <div class="category">
+                                            @foreach ($post->categories as $category)
+                                                <a href="#" class="category">{{ $category->name }}</a>
+                                            @endforeach
+                                        </div>
+
+                                        <h1 class="slider__title">
+                                            <a href="#" class="slider__title-link">{{ $post->title }}</a>
+                                        </h1>
+                                        <p class="slider__exerpt">{{ Str::limit($post->excerpt, 120) }}</p>
+                                        <ul class="slider__meta list-inline">
+                                            <li class="slider__meta-item">
+                                                <a href="#" class="slider__meta-link">
+                                                    <img src="{{ asset('storage/' . ($post->author->profile_image ?? 'default.jpg')) }}" alt="" class="slider__meta-img">
+                                                </a>
+                                            </li>
+                                            <li class="slider__meta-item">
+                                                <a href="#" class="slider__meta-link">{{ $post->user->name ?? 'Autor desconocido' }}</a>
+                                            </li>
+                                            <li class="slider__meta-item">
+                                                <span class="dot"></span> {{ $post->created_at->format('F d, Y') }}
+                                            </li>
+                                        </ul>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
-    </div>
 
-    <div thumbsSlider="" class="swiper slider__bottom container-fluid">
-        <div class="swiper-wrapper">
-            @foreach ($posts as $post)
-                <div class="swiper-slide">
-                    <div class="post-slider">
-                        <img src="{{ asset('storage/' . $post->featured_image) }}" alt="" class="post-slider__img">
-                        <div class="post-slider__content">
-                            <p class="post-slider__title">
-                                <span>{{ $post->title }}</span>
-                            </p>
-                            <ul class="post-slider__meta list-inline">
-                                <li class="post-slider__meta-link">
-                                    <i class="bi bi-clock-fill"></i> {{ $post->created_at->format('F d, Y') }}
-                                </li>
-                            </ul>
+        <div thumbsSlider="" class="swiper slider__bottom container-fluid">
+            <div class="swiper-wrapper">
+                @foreach ($posts as $post)
+                    <div class="swiper-slide">
+                        <div class="post-slider">
+                            <img src="{{ asset('storage/' . $post->featured_image) }}" alt="" class="post-slider__img">
+                            <div class="post-slider__content">
+                                <p class="post-slider__title">
+                                    <span>{{ $post->title }}</span>
+                                </p>
+                                <ul class="post-slider__meta list-inline">
+                                    <li class="post-slider__meta-link">
+                                        <i class="bi bi-clock-fill"></i> {{ $post->created_at->format('F d, Y') }}
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
     </div>
-      </div>
 
 
 
