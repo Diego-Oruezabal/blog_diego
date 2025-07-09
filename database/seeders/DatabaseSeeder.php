@@ -12,11 +12,31 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+      // Crear 5 usuarios
+        \App\Models\User::factory()->create(['name' => 'Admin User', 'email' => 'admin@example.com', 'role' => 'admin']);
+        \App\Models\User::factory(4)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        // Crear 5 categorias
+        $categories = \App\Models\Category::factory(5)->create();
+
+        // Crear 5 etiquetas
+        $tags = \App\Models\Tag::factory(5)->create();
+
+        // Crear 50 posts
+        $posts = \App\Models\Post::factory(50)->create();
+
+        //Asignar categorias y tags a los posts
+        $posts->each(function ($post) use ($categories, $tags) {
+            // Asociar 1-3 categorias aleatorias por post
+            $post->categories()->attach(
+                $categories->random(rand(1, 3))->pluck('id')->toArray()
+            );
+
+            // Asociar 1-5 tags aleatorios por post
+            $post->tags()->attach(
+                $tags->random(rand(1, 5))->pluck('id')->toArray()
+            );
+
+        });
     }
 }
