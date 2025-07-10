@@ -38,14 +38,14 @@
                                         <ul class="slider__meta list-inline">
                                             <li class="slider__meta-item">
                                                 <a href="#" class="slider__meta-link">
-                                                    <img src="{{ asset('storage/' . ($post->author->profile_image ?? 'default.jpg')) }}" alt="" class="slider__meta-img">
+                                                    <img src="{{ asset('assets/img/author/diego.png') }}" alt="" class="slider__meta-img">
                                                 </a>
                                             </li>
                                             <li class="slider__meta-item">
                                                 <a href="#" class="slider__meta-link">{{ $post->user->name ?? 'Autor desconocido' }}</a>
                                             </li>
                                             <li class="slider__meta-item">
-                                                <span class="dot"></span> {{ $post->created_at->format('F d, Y') }}
+                                                <span class="dot"></span> {{ $post->created_at->translatedFormat('d F Y') }}
                                             </li>
                                         </ul>
 
@@ -70,7 +70,7 @@
                                 </p>
                                 <ul class="post-slider__meta list-inline">
                                     <li class="post-slider__meta-link">
-                                        <i class="bi bi-clock-fill"></i> {{ $post->created_at->format('F d, Y') }}
+                                        <i class="bi bi-clock-fill"></i> {{ $post->created_at->translatedFormat('d F Y') }}
                                     </li>
                                 </ul>
                             </div>
@@ -120,7 +120,8 @@
                                             <a href="#" class="post-card__meta-link">{{ $post->user->name ?? 'Autor desconocido' }}</a>
                                         </li>
                                         <li class="post-card__meta-item">
-                                            <span class="dot"></span> {{ $post->created_at->format('F d, Y') }}
+                                            <span class="dot"></span> {{ $post->created_at->translatedFormat('d F Y') }}
+
                                         </li>
                                     </ul>
                                 </div>
