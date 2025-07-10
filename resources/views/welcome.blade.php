@@ -18,7 +18,7 @@
         <div class="swiper slider__top">
             <div class="swiper-wrapper">
                 @foreach ($latestPost as $post)
-                    <div class="slider__item swiper-slide" style="background-image: url('{{ asset('storage/' . $post->featured_image) }}');">
+                    <div class="slider__item swiper-slide" style="background-image: url({{ asset('storage/' . $post->featured_image)}});">
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-xl-7 col-lg-9 col-md-12">
