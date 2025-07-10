@@ -113,7 +113,7 @@
                                     <ul class="post-card__meta list-inline">
                                         <li class="post-card__meta-item">
                                             <a href="#" class="post-card__meta-link">
-                                                <img src="{{ asset('storage/' . ($post->author->profile_image ?? 'default.jpg')) }}" alt="" class="post-card__meta-img">
+                                                <img src="{{ asset('assets/img/author/diego.png') }}" alt="" class="post-card__meta-img">
                                             </a>
                                         </li>
                                         <li class="post-card__meta-item">
@@ -133,7 +133,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="pagination-wrapper">
-                            {{ $allPosts->links('vendor.pagination.bootstrap-5') }}
+                            {{ $allPosts->links('vendor.pagination.bootstrap-4') }}
                         </div>
                     </div>
                 </div>
