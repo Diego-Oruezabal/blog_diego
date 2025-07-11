@@ -6,7 +6,8 @@
 </head>
 
 <body>
-   @include('partials.loading')
+    <!--loading -->
+    @include('partials.loading')
 
     <!-- Header -->
     @include('partials.header')
@@ -32,7 +33,7 @@
                                         </div>
 
                                         <h1 class="slider__title">
-                                            <a href="#" class="slider__title-link">{{ $post->title }}</a>
+                                            <a href="{{ route('posts.show', ['id' => $post->id, 'slug' => $post->slug]) }}" class="slider__title-link">{{ $post->title }}</a>
                                         </h1>
                                         <p class="slider__exerpt">{{ Str::limit($post->excerpt, 120) }}</p>
                                         <ul class="slider__meta list-inline">
@@ -91,7 +92,7 @@
                         <div class="mb-4 col-xl-4 col-lg-6 col-md-6">
                             <div class="post-card post-card--default">
                                 <div class="post-card__image">
-                                    <a href="#">
+                                    <a href="{{ route('posts.show', ['id' => $post->id, 'slug' => $post->slug]) }}">
                                         <img src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }}">
                                     </a>
                                 </div>
@@ -103,7 +104,7 @@
                                     @endif
 
                                     <h5 class="post-card__title">
-                                        <a href="#" class="post-card__title-link">{{ $post->title }}</a>
+                                        <a href="{{ route('posts.show', ['id' => $post->id, 'slug' => $post->slug]) }}" class="post-card__title-link">{{ $post->title }}</a>
                                     </h5>
 
                                     <p class="post-card__exerpt">
@@ -148,7 +149,7 @@
     </main>
 
     <!--footer-->
-    @include('partials.footer' )
+    @include('partials.footer')
 
     <!--Search-form-->
     <div class="search__box">

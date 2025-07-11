@@ -23,16 +23,20 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
-            'role' => $this->faker->randomElement(['admin', 'editor', 'user']),
-            'remember_token' => Str::random(10),
-            'created_at' => now(),
-            'updated_at' => now(),
-        ];
+      return [
+        'name' => fake()->name(),
+        'email' => fake()->unique()->safeEmail(),
+        'email_verified_at' => now(),
+        'password' => static::$password ??= Hash::make('password'),
+        'role' => $this->faker->randomElement(['admin', 'editor', 'user']),
+        'descripcion' => $this->faker->paragraph(),
+        'urlfacebook' => $this->faker->optional()->url(),
+        'urlinstagram' => $this->faker->optional()->url(),
+        'urlyoutube' => $this->faker->optional()->url(),
+        'remember_token' => Str::random(10),
+        'created_at' => now(),
+        'updated_at' => now(),
+    ];
     }
 
     /**
