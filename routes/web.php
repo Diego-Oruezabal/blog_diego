@@ -14,6 +14,9 @@ Route::get('/', [PostController::class, 'index'])->name('home');
 
 Route::get('{id}/{slug}', [PostController::class, 'show'])->name('posts.show');
 
+Route::view('/contact', 'contact.index')->name('contact.index');
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
