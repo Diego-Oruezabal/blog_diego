@@ -28,7 +28,7 @@
                                 </li>
                                 <!--contact -->
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('contact.index') }}"> Contacto </a>
+                                    <a class="nav-link" href="{{ route('contact.index') }}"> Acerca de </a>
                                 </li>
                                 <!--Pages-->
                                 <li class="nav-item">

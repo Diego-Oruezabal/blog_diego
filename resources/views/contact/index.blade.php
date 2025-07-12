@@ -25,7 +25,7 @@
                             </div>
                             <div class="about-us__description">
                                 <p class="about-us__description-text">
-                                    ¡Hola! Bienvenido a El Patrón Singleton. Soy Diego Oruezábal, desarrollador web y entusiasta de la tecnología con un gran interés en la programación y el mundo empresarial.
+                                    ¡Hola! Bienvenido a El Patrón Singleton. Soy Diego Oruezábal, desarrollador fullstack y entusiasta de la tecnología con un gran interés en la programación y el mundo empresarial.
                                 </p>
                                 <p class="about-us__description-text">
                                     Este blog nace de la idea de compartir conocimientos, experiencias, herramientas y reflexiones sobre el mundo del desarrollo, así como sobre finanzas personales, inversión a largo plazo, economía y crecimiento profesional.
