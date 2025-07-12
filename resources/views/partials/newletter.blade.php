@@ -3,10 +3,11 @@
                 <div class="row">
                     <div class="m-auto col-lg-6 col-md-10 col-sm-11">
                         <div class="newslettre">
-                            <div class="newslettre__info ">
-                                <h3 class="newslettre__title">Get The Best Blog Stories into Your inbox!</h3>
-                                <p class="newslettre__desc"> Sign up for free and be the first to get notified about new posts. </p>
-                            </div>
+                        <div class="newslettre__info">
+                            <h3 class="newslettre__title">Explora ideas, historias y consejos que inspiran</h3>
+                            <p class="newslettre__desc">Sumérgete en artículos seleccionados especialmente para ti. ¡Bienvenido a nuestra comunidad!</p>
+                        </div>
+
 
                             <ul class="list-inline social-media social-media--layout-three">
                                 <li class="social-media__item">

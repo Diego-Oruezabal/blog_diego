@@ -1,16 +1,16 @@
 <header class="header fixed-top navbar-expand-xl">
         <div class="container-fluid">
             <div class="header__main">
-                <!-- logo -->
+              <!-- logo -->
                 <div class="logo">
-              <a class="logo__link logo--dark" href="{{ url('/') }}">
-                 <img src="{{ asset('assets/img/logo/logo-dark.png') }}" alt="" class="logo__img">
-                </a>
-                <a class="logo__link logo--light" href="{{ url('/') }}">
-                    <img src="{{ asset('assets/img/logo/logo-white.png') }}" alt="" class="logo__img">
-                </a>
-
+                    <a class="logo__link logo--dark" href="{{ url('/') }}">
+                        <span class="logo__text logo__text--dark">EL PATRON SINGLETON</span>
+                    </a>
+                    <a class="logo__link logo--light" href="{{ url('/') }}">
+                        <span class="logo__text logo__text--light">EL PATRON SINGLETON</span>
+                    </a>
                 </div><!--/-->
+
 
                 <div class="header__navbar">
                     <nav class="navbar">
@@ -48,7 +48,7 @@
 
                                 <!--Blogs-->
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link  dropdown-toggle" href="javascript:void(0)" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false"> blogs </a>
+                                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false"> blogs </a>
                                     <ul class="dropdown-menu ">
                                         <li><a class="dropdown-item " href="blog-grid.html">Blog grid</a></li>
                                         <li><a class="dropdown-item" href="blog-masonry.html">Blog masonry</a></li>
@@ -85,23 +85,24 @@
                     <!--header-social-->
                     <ul class="list-inline social-media social-media--layout-one">
                         <li class="social-media__item">
-                            <a href="#" class="social-media__link" >
+                            <a href="{{ config('app.social.facebook') }}" class="social-media__link" target="_blank">
                                 <i class="bi bi-facebook"></i>
                             </a>
                         </li>
 
                         <li class="social-media__item">
-                            <a href="#" class="social-media__link">
+                            <a href="{{ config('app.social.instagram') }}" class="social-media__link" target="_blank">
                                 <i class="bi bi-instagram"></i>
                             </a>
-                            </li>
-                        <li class="social-media__item">
-                            <a href="#" class="social-media__link"><i class="bi bi-twitter-x"></i></a>
                         </li>
+
                         <li class="social-media__item">
-                            <a href="#" class="social-media__link"><i class="bi bi-youtube"></i></a>
+                            <a href="{{ config('app.social.youtube') }}" class="social-media__link" target="_blank">
+                                <i class="bi bi-youtube"></i>
+                            </a>
                         </li>
                     </ul>
+
 
                     <!--theme-switch-->
                     <div class="theme-switch">

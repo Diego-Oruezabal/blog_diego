@@ -1,0 +1,15 @@
+.logo__text {
+    font-family: 'Orbitron', serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+    display: inline-block;
+}
+
+.logo__text--light {
+    color: #ffffff; /* blanco o claro para fondo oscuro */
+}
+
+.logo__text--dark {
+    color: #222222; /* oscuro para fondo claro */
+}
