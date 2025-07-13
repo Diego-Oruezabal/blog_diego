@@ -14,6 +14,8 @@ Route::get('/', [PostController::class, 'index'])->name('home');
 
 Route::get('{id}/{slug}', [PostController::class, 'show'])->name('posts.show');
 
+Route::get('/blog', [PostController::class, 'listAll'])->name('blog.index');
+
 Route::view('/contact', 'contact.index')->name('contact.index');
 
 

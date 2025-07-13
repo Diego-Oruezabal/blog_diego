@@ -1,0 +1,18 @@
+🧾 Acerca de El Patrón Singleton
+En programación, un Singleton es una clase que solo puede tener una instancia.
+En este blog, esa instancia soy yo.
+
+Durante muchos años he liderado equipos, gestionado negocios y tomado decisiones estratégicas. Hoy aplico esa misma visión empresarial al mundo del desarrollo web, la tecnología y la inversión.
+
+El Patrón Singleton no es solo un guiño al código. Es una forma de entender el aprendizaje, el trabajo y la vida con intención y estructura.
+
+Aquí comparto contenido que une dos mundos que suelen ir por separado:
+📌 Lógica y negocio
+📌 Código y capital
+📌 Pensamiento técnico y experiencia real
+
+Desde la programación, la gestión financiera, el liderazgo y la formación continua, este blog es mi espacio para conectar ideas, analizar el presente y construir algo duradero.
+
+Porque cada decisión cuenta.
+Porque el enfoque importa.
+Porque al final, tú eres tu mejor instancia.

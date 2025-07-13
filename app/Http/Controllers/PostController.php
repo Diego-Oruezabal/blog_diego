@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
-
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -51,4 +51,23 @@ class PostController extends Controller
 
                 return view('blog.view', compact('post', 'latestPosts', 'allCategories', 'previousPost', 'nextPost'));
             }
+
+            public function listAll()
+            {
+                 $allPosts = Post::with(['user', 'categories'])
+                        ->latest('published_at')
+                        ->paginate(9); // Paginación de 9 en 9
+
+                 $allCategories = Category::withCount('posts')->orderBy('name')->get();
+
+                  $tags = Tag::all();
+
+                $latestPosts = Post::latest('published_at')
+                            ->with('user')
+                            ->take(4)
+                            ->get();
+
+                return view('blog.index', compact('allPosts', 'allCategories', 'latestPosts', 'tags'));
+            }
+
 }

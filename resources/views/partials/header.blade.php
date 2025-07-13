@@ -24,7 +24,7 @@
 
                                 <!--Blogs-->
                                 <li class="nav-item">
-                                    <a class="nav-link" href="contact.html"> Blogs </a>
+                                    <a class="nav-link" href="{{ route('blog.index') }}"> Blogs </a>
                                 </li>
                                 <!--contact -->
                                 <li class="nav-item">
