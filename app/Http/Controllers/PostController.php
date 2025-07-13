@@ -52,22 +52,31 @@ class PostController extends Controller
                 return view('blog.view', compact('post', 'latestPosts', 'allCategories', 'previousPost', 'nextPost'));
             }
 
-            public function listAll()
-            {
-                 $allPosts = Post::with(['user', 'categories'])
-                        ->latest('published_at')
-                        ->paginate(9); // Paginación de 9 en 9
+       public function listAll(Request $request)
+        {
+            $query = $request->input('search');
 
-                 $allCategories = Category::withCount('posts')->orderBy('name')->get();
+            $postQuery = Post::with(['user', 'categories'])
+                ->latest('published_at');
 
-                  $tags = Tag::all();
-
-                $latestPosts = Post::latest('published_at')
-                            ->with('user')
-                            ->take(4)
-                            ->get();
-
-                return view('blog.index', compact('allPosts', 'allCategories', 'latestPosts', 'tags'));
+            if ($query) {
+                $postQuery->where(function ($q) use ($query) {
+                    $q->where('title', 'like', "%{$query}%")
+                    ->orWhere('content', 'like', "%{$query}%");
+                });
             }
+
+            $allPosts = $postQuery->paginate(9)->appends($request->query());
+
+            $allCategories = Category::withCount('posts')->orderBy('name')->get();
+            $tags = Tag::all();
+            $latestPosts = Post::latest('published_at')->with('user')->take(4)->get();
+
+            return view('blog.index', compact('allPosts', 'allCategories', 'latestPosts', 'tags'));
+        }
+
+
+
+
 
 }

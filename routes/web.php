@@ -18,6 +18,9 @@ Route::get('/blog', [PostController::class, 'listAll'])->name('blog.index');
 
 Route::view('/contact', 'contact.index')->name('contact.index');
 
+Route::get('/blog/buscar', [PostController::class, 'search'])->name('blog.search');
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
