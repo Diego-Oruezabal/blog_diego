@@ -14,6 +14,8 @@
     @include('partials.header')
 
     <main class="main">
+
+
         <!--post-default-->
         <section class="mt-130 mb-30">
             <div class="container-fluid">
@@ -22,15 +24,15 @@
                         <div class="theiaStickySidebar">
                             <!--Post-single-->
                             <div class="post-single">
-    <div class="post-single__image">
-        <img src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }}" class="post-single__image-img">
-    </div>
+                            <div class="post-single__image">
+                                <img src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }}" class="post-single__image-img">
+                            </div>
 
     <div class="post-single__content">
-        @if ($post->categories->count())
-            <a href="#" class="category">
-                {{ $post->categories->first()->name }}
-            </a>
+       @if($post->categories->count())
+            @foreach($post->categories as $category)
+                <a href="{{ route('blog.index', ['category' => $category->slug]) }}" class="category">{{ $category->name }}</a>
+            @endforeach
         @endif
 
         <h2 class="post-single__title">{{ $post->title }}</h2>
@@ -59,7 +61,7 @@
             <ul class="list-inline widget__tags">
                 @foreach ($post->tags as $tag)
                     <li class="widget__tags-item">
-                        <a href="#" class="widget__tags-link">{{ $tag->name }}</a>
+                        <a href="{{ route('blog.index', ['tag' => $tag->slug]) }}" class="widget__tags-link">{{ $tag->name }}</a>
                     </li>
                 @endforeach
             </ul>
@@ -258,23 +260,7 @@
     @include('partials.footer')
 
     <!--Search-form-->
-    <div class="search__box">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="m-auto col-lg-6 col-md-8 col-sm-11">
-                    <div class="search__content ">
-                        <button type="button" class="search__box-btn-close">
-                            <i class="bi bi-x-lg"></i>
-                        </button>
-                        <form class="search__form" action="search-page.html">
-                            <input type="search" class="search__form-input" value="" placeholder="What are you looking for?">
-                            <button type="submit" class="search__form-btn-search">search</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('partials.buscar')
 
     <!--plugins -->
     @include('partials.js')

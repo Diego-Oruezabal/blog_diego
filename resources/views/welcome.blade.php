@@ -28,7 +28,7 @@
                                         <!-- Mostrar todas las categorías -->
                                         <div class="category">
                                             @foreach ($post->categories as $category)
-                                                <a href="#" class="category">{{ $category->name }}</a>
+                                                <a href="{{ route('blog.index', ['category' => $category->slug]) }}" class="category">{{ $category->name }}</a>
                                             @endforeach
                                         </div>
 
@@ -98,9 +98,11 @@
                                 </div>
 
                                 <div class="post-card__content">
-                                    {{-- Mostrar la primera categoría --}}
+                                    {{-- Mostrar las categoría --}}
                                     @if ($post->categories->count())
-                                        <a href="#" class="category">{{ $post->categories->first()->name }}</a>
+                                        @foreach ($post->categories as $category)
+                                            <a href="{{ route('blog.index', ['category' => $category->slug]) }}" class="category">{{ $category->name }}</a>
+                                        @endforeach
                                     @endif
 
                                     <h5 class="post-card__title">

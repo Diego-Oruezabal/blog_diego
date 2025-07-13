@@ -20,6 +20,10 @@ Route::view('/contact', 'contact.index')->name('contact.index');
 
 Route::get('/blog/buscar', [PostController::class, 'search'])->name('blog.search');
 
+Route::get('/blog/categoria/{slug}', [PostController::class, 'byCategory'])->name('posts.byCategory');
+Route::get('/blog/etiqueta/{slug}', [PostController::class, 'byTag'])->name('posts.byTag');
+
+
 
 
 Route::get('/dashboard', function () {

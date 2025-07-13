@@ -9,19 +9,19 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function index()
-        {
-            $latestPost = Post::with(['user', 'categories'])
-                        ->latest('published_at')
-                        ->take(4)
-                        ->get();
+        public function index()
+            {
+                $latestPost = Post::with(['user', 'categories'])
+                            ->latest('published_at')
+                            ->take(4)
+                            ->get();
 
-            $allPosts = Post::with(['user', 'categories'])
-                        ->latest('published_at')
-                        ->paginate(9); // Paginación de 9 en 9
+                $allPosts = Post::with(['user', 'categories'])
+                            ->latest('published_at')
+                            ->paginate(9); // Paginación de 9 en 9
 
-            return view('welcome', compact('latestPost','allPosts'));
-        }
+                return view('welcome', compact('latestPost','allPosts'));
+            }
 
         public function show($id, $slug)
             {
@@ -75,6 +75,38 @@ class PostController extends Controller
             return view('blog.index', compact('allPosts', 'allCategories', 'latestPosts', 'tags'));
         }
 
+        public function byCategory($slug)
+        {
+            $category = Category::where('slug', $slug)->firstOrFail();
+
+            $allPosts = $category->posts()
+                ->with(['user', 'categories'])
+                ->latest('published_at')
+                ->paginate(9);
+
+            $allCategories = Category::withCount('posts')->orderBy('name')->get();
+            $tags = Tag::all();
+            $latestPosts = Post::latest('published_at')->with('user')->take(4)->get();
+
+            return view('blog.index', compact('allPosts', 'allCategories', 'latestPosts', 'tags', 'category'));
+        }
+
+
+      public function byTag($slug)
+        {
+            $tag = Tag::where('slug', $slug)->firstOrFail();
+
+            $allPosts = $tag->posts()
+                ->with(['user', 'categories'])
+                ->latest('published_at')
+                ->paginate(9);
+
+            $allCategories = Category::withCount('posts')->orderBy('name')->get();
+            $tags = Tag::all();
+            $latestPosts = Post::latest('published_at')->with('user')->take(4)->get();
+
+            return view('blog.index', compact('allPosts', 'allCategories', 'latestPosts', 'tags', 'tag'));
+        }
 
 
 
