@@ -52,7 +52,7 @@ class PostController extends Controller
                 return view('blog.view', compact('post', 'latestPosts', 'allCategories', 'previousPost', 'nextPost'));
             }
 
-      public function listAll(Request $request)
+       public function listAll(Request $request)
         {
             $query = $request->input('search');
             $categorySlug = $request->input('category');
@@ -110,7 +110,7 @@ class PostController extends Controller
         }
 
 
-      public function byTag($slug)
+       public function byTag($slug)
         {
             $tag = Tag::where('slug', $slug)->firstOrFail();
 
