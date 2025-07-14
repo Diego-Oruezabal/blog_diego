@@ -24,7 +24,16 @@
                                 <div class="alert alert-info">
                                     Se encontraron <strong>{{ $allPosts->total() }}</strong> resultados para: <strong>"{{ request('search') }}"</strong>
                                 </div>
+                            @elseif(request('category'))
+                                <div class="alert alert-info">
+                                    Se encontraron <strong>{{ $allPosts->total() }}</strong> resultados en la categoría: <strong>"{{ ucfirst(request('category')) }}"</strong>
+                                </div>
+                            @elseif(request('tag'))
+                                <div class="alert alert-info">
+                                    Se encontraron <strong>{{ $allPosts->total() }}</strong> resultados con la etiqueta: <strong>"{{ ucfirst(request('tag')) }}"</strong>
+                                </div>
                             @endif
+
 
 
                             <div class="banner__content ">

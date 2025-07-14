@@ -52,17 +52,34 @@ class PostController extends Controller
                 return view('blog.view', compact('post', 'latestPosts', 'allCategories', 'previousPost', 'nextPost'));
             }
 
-       public function listAll(Request $request)
+      public function listAll(Request $request)
         {
             $query = $request->input('search');
+            $categorySlug = $request->input('category');
+            $tagSlug = $request->input('tag');
 
-            $postQuery = Post::with(['user', 'categories'])
+            $postQuery = Post::with(['user', 'categories', 'tags']) // Asegúrate de incluir 'tags'
                 ->latest('published_at');
 
+            // Filtro por búsqueda
             if ($query) {
                 $postQuery->where(function ($q) use ($query) {
                     $q->where('title', 'like', "%{$query}%")
                     ->orWhere('content', 'like', "%{$query}%");
+                });
+            }
+
+            // Filtro por categoría
+            if ($categorySlug) {
+                $postQuery->whereHas('categories', function ($q) use ($categorySlug) {
+                    $q->where('slug', $categorySlug);
+                });
+            }
+
+            // Filtro por tag
+            if ($tagSlug) {
+                $postQuery->whereHas('tags', function ($q) use ($tagSlug) {
+                    $q->where('slug', $tagSlug);
                 });
             }
 
@@ -74,6 +91,7 @@ class PostController extends Controller
 
             return view('blog.index', compact('allPosts', 'allCategories', 'latestPosts', 'tags'));
         }
+
 
         public function byCategory($slug)
         {

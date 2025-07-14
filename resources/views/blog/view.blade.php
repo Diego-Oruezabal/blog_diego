@@ -211,7 +211,7 @@
                                 <ul class="widget__categories">
                                     @foreach($allCategories as $category)
                                         <li class="widget__categories-item">
-                                            <a href="#" class="category widget__categories-link">
+                                            <a href="{{ route('blog.index', ['category' => $category->slug]) }}" class="category widget__categories-link">
                                                 {{ $category->name }}
                                             </a>
                                             <span class="ml-auto widget__categories-number">
@@ -229,7 +229,7 @@
                                 <ul class="list-inline widget__tags">
                                     @foreach($post->tags as $tag)
                                         <li class="widget__tags-item">
-                                            <a href="#" class="widget__tags-link">{{ $tag->name }}</a>
+                                            <a href="{{ route('blog.index', ['tag' => $tag->slug]) }}" class="widget__tags-link">{{ $tag->name }}</a>
                                         </li>
                                     @endforeach
                                 </ul>
