@@ -39,12 +39,12 @@
 
         <ul class="post-single__meta list-inline">
             <li class="post-single__meta-item">
-                <a href="#">
+                <a href="{{ route('blog.index', ['author' => $post->user->id]) }}">
                     <img src="{{ asset('assets/img/author/diego.png') }}" alt="{{ $post->user->name }}" class="post-single__meta-img">
                 </a>
             </li>
             <li class="post-single__meta-item">
-                <a href="#" class="post-single__meta-link">{{ $post->user->name }}</a>
+                <a href="{{ route('blog.index', ['author' => $post->user->id]) }}" class="post-single__meta-link">{{ $post->user->name }}</a>
             </li>
             <li class="post-single__meta-item">
                 <span class="dot"></span> {{ $post->published_at->format('F d, Y') }}
@@ -133,7 +133,7 @@
                             <div class="widget">
                                 <div class="widget__author">
                                     <div class="widget__author-top">
-                                        <a href="#" class="widget__author-link">
+                                        <a href="{{ route('blog.index', ['author' => $post->user->id]) }}" class="widget__author-link">
                                             <img src="{{ asset('assets/img/author/diego.png') }}" alt="{{ $post->user->name }}" class="widget__author-img">
                                         </a>
                                     </div>

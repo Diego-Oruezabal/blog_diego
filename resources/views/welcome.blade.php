@@ -38,12 +38,12 @@
                                         <p class="slider__exerpt">{{ Str::limit($post->excerpt, 120) }}</p>
                                         <ul class="slider__meta list-inline">
                                             <li class="slider__meta-item">
-                                                <a href="#" class="slider__meta-link">
+                                                <a href="{{ route('blog.index', ['author' => $post->user->id]) }}" class="slider__meta-link">
                                                     <img src="{{ asset('assets/img/author/diego.png') }}" alt="" class="slider__meta-img">
                                                 </a>
                                             </li>
                                             <li class="slider__meta-item">
-                                                <a href="#" class="slider__meta-link">{{ $post->user->name ?? 'Autor desconocido' }}</a>
+                                                <a href="{{ route('blog.index', ['author' => $post->user->id]) }}" class="slider__meta-link">{{ $post->user->name ?? 'Autor desconocido' }}</a>
                                             </li>
                                             <li class="slider__meta-item">
                                                 <span class="dot"></span> {{ $post->created_at->translatedFormat('d F Y') }}
@@ -115,12 +115,12 @@
 
                                     <ul class="post-card__meta list-inline">
                                         <li class="post-card__meta-item">
-                                            <a href="#" class="post-card__meta-link">
+                                            <a href="{{ route('blog.index', ['author' => $post->user->id]) }}" class="post-card__meta-link">
                                                 <img src="{{ asset('assets/img/author/diego.png') }}" alt="" class="post-card__meta-img">
                                             </a>
                                         </li>
                                         <li class="post-card__meta-item">
-                                            <a href="#" class="post-card__meta-link">{{ $post->user->name ?? 'Autor desconocido' }}</a>
+                                            <a href="{{ route('blog.index', ['author' => $post->user->id]) }}" class="post-card__meta-link">{{ $post->user->name ?? 'Autor desconocido' }}</a>
                                         </li>
                                         <li class="post-card__meta-item">
                                             <span class="dot"></span> {{ $post->created_at->translatedFormat('d F Y') }}

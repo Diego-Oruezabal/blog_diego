@@ -32,7 +32,17 @@
                                 <div class="alert alert-info">
                                     Se encontraron <strong>{{ $allPosts->total() }}</strong> resultados con la etiqueta: <strong>"{{ ucfirst(request('tag')) }}"</strong>
                                 </div>
+
+                            @elseif(request('author'))
+                                @php
+                                    $authorName = \App\Models\User::find(request('author'))?->name ?? 'Autor desconocido';
+                                @endphp
+                                <div class="alert alert-info">
+                                    Se encontraron <strong>{{ $allPosts->total() }}</strong> resultados del autor: <strong>"{{ $authorName }}"</strong>
+                                </div>
                             @endif
+
+
 
 
 
@@ -87,12 +97,12 @@
 
                                                 <ul class="post-card__meta list-inline">
                                                     <li class="post-card__meta-item">
-                                                        <a href="#" class="post-card__meta-link">
+                                                        <a href="{{ route('blog.index', ['author' => $post->user->id]) }}" class="post-card__meta-link">
                                                             <img src="{{ asset('assets/img/author/diego.png') }}" alt="{{ $post->user->name }}" class="post-card__meta-img">
                                                         </a>
                                                     </li>
                                                     <li class="post-card__meta-item">
-                                                        <a href="#" class="post-card__meta-link">{{ $post->user->name }}</a>
+                                                        <a href="{{ route('blog.index', ['author' => $post->user->id]) }}" class="post-card__meta-link">{{ $post->user->name }}</a>
                                                     </li>
                                                     <li class="post-card__meta-item">
                                                         <span class="dot"></span> {{ $post->published_at ? \Carbon\Carbon::parse($post->published_at)->translatedFormat('d F Y') : $post->created_at->translatedFormat('d F Y') }}

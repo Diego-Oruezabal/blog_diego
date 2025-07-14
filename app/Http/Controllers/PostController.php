@@ -57,11 +57,11 @@ class PostController extends Controller
             $query = $request->input('search');
             $categorySlug = $request->input('category');
             $tagSlug = $request->input('tag');
+            $authorId = $request->input('author');
 
-            $postQuery = Post::with(['user', 'categories', 'tags']) // Asegúrate de incluir 'tags'
+            $postQuery = Post::with(['user', 'categories', 'tags'])
                 ->latest('published_at');
 
-            // Filtro por búsqueda
             if ($query) {
                 $postQuery->where(function ($q) use ($query) {
                     $q->where('title', 'like', "%{$query}%")
@@ -69,18 +69,20 @@ class PostController extends Controller
                 });
             }
 
-            // Filtro por categoría
             if ($categorySlug) {
                 $postQuery->whereHas('categories', function ($q) use ($categorySlug) {
                     $q->where('slug', $categorySlug);
                 });
             }
 
-            // Filtro por tag
             if ($tagSlug) {
                 $postQuery->whereHas('tags', function ($q) use ($tagSlug) {
                     $q->where('slug', $tagSlug);
                 });
+            }
+
+            if ($authorId) {
+                $postQuery->where('user_id', $authorId);
             }
 
             $allPosts = $postQuery->paginate(9)->appends($request->query());
