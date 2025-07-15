@@ -1,52 +1,57 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+@extends('layouts.base')
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-        </div>
+@section('title', 'Blog - El Patrón Singleton')
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+@section('content')
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+        <section class="m-top mb-60">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="m-auto col-lg-6">
+                        <div class="widget">
+                            <h5 class="widget__title">Sign up</h5>
+                          <form class="widget__form contact_form" method="POST" action="{{ route('register') }}">
+                                @csrf
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
+                                <div class="form-group">
+                                    <input type="text" class="form-control widget__form-input" placeholder="Nombre de usuario*" name="name" value="{{ old('name') }}" required autofocus>
+                                </div>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control widget__form-input" placeholder="Correo electrónico*" name="email" value="{{ old('email') }}" required>
+                                </div>
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+                                <div class="form-group">
+                                    <input type="password" class="form-control widget__form-input" placeholder="Contraseña*" name="password" required>
+                                </div>
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
+                                <div class="form-group">
+                                    <input type="password" class="form-control widget__form-input" placeholder="Confirmar contraseña*" name="password_confirmation" required>
+                                </div>
 
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
+                                <div class="widget__form-controls form-group">
+                                    <div class="widget__form-controls-checkbox">
+                                        <input type="checkbox" class="widget__form-controls-input" id="terms" required>
+                                        <label class="widget__form-controls-label" for="terms">
+                                            Acepto los <a href="#" class="widget__form-link">términos y condiciones</a>
+                                        </label>
+                                    </div>
+                                </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
+                                <div class="widget__form-btn">
+                                    <button type="submit" class="btn-custom">Registrarse</button>
+                                </div>
 
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+                                <p class="widget__form-text">
+                                    ¿Ya tienes una cuenta?
+                                    <a href="{{ route('login') }}" class="widget__form-link">Iniciar sesión</a>
+                                </p>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+@endsection
