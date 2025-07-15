@@ -9,36 +9,53 @@
                     <a class="logo__link logo--light" href="{{ url('/') }}">
                         <span class="logo__text logo__text--light">EL PATRON SINGLETON</span>
                     </a>
-                </div><!--/-->
+                </div>
 
 
                 <div class="header__navbar">
                     <nav class="navbar">
-                        <!--navbar-collapse-->
+
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ">
-                                <!--Homes -->
+
                                <li class="nav-item">
                                     <a class="nav-link" href="{{ url('/') }}"> Inicio </a>
                                 </li>
 
-                                <!--Blogs-->
+
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('blog.index') }}"> Blogs </a>
                                 </li>
-                                <!--contact -->
+
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('contact.index') }}"> Acerca de </a>
                                 </li>
-                                <!--Pages-->
-                                <li class="nav-item">
-                                    <a class="nav-link" href="contact.html"> Acceder </a>
-                                </li>
 
+
+                                @if (Auth::check())
+                                      <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false"> {{ auth()->user()->name }} </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Nuevo post</a></li>
+                                            <li><a class="dropdown-item" href="#">Perfil</a></li>
+                                            <li>
+                                                <form method="POST" action="{{ route('logout') }}">
+                                                    @csrf
+                                                    <button type="submit" class="dropdown-item">Cerrar sesión</button>
+                                                </form>
+                                            </li>
+                                        </ul>
+
+                                        </li>
+
+                                @else
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('login') }}"> Acceder </a>
+                                    </li>
+                                @endif
 
                             </ul>
                         </div>
-                        <!--/-->
                     </nav>
                 </div>
 
