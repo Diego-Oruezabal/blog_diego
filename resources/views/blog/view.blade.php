@@ -1,20 +1,8 @@
-<!doctype html>
-<html lang="es">
+@extends('layouts.base')
 
-<head>
-    @include('partials.head')
-</head>
+@section('title', 'Blog - El Patrón Singleton')
 
- <body>
-
-    <!--loading -->
-    @include('partials.loading')
-
-    <!-- Header -->
-    @include('partials.header')
-
-    <main class="main">
-
+@section('content')
 
         <!--post-default-->
         <section class="mt-130 mb-30">
@@ -250,19 +238,12 @@
                                     </div>
                                 </div>
                             </div>
-                        </section><!--/-->
+        </section><!--/-->
 
         <!--newslettre-->
         @include('partials.newletter')
-    </main>
 
-    <!--footer-->
-    @include('partials.footer')
+@endsection
 
-    <!--Search-form-->
-    @include('partials.buscar')
 
-    <!--plugins -->
-    @include('partials.js')
-</body>
-</html>
+

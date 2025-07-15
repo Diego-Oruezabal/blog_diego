@@ -1,20 +1,10 @@
-<!doctype html>
-<html lang="es">
+@extends('layouts.base')
 
-<head>
-@include('partials.head')
-</head>
+@section('title', 'Blog - El Patrón Singleton')
 
-<body>
-    <!--loading -->
-    @include('partials.loading')
+@section('content')
 
-    <!-- Header -->
-    @include('partials.header')
-    <!--/-->
-
-    <main class="main">
-    <!--about-us-->
+   <!--about-us-->
         <section class="mb-10 m-top">
             <div class="container-fluid">
                 <div class="row">
@@ -52,24 +42,7 @@
                 </div>
             </div>
         </section>
-
-
-
-
-        <!--newslettre-->
+    <!--newslettre-->
        @include('partials.newletter')
-    </main>
 
-
-    <!--footer-->
-    @include('partials.footer')
-
-    <!--Search-form-->
-    @include('partials.buscar')
-
-@include('partials.js')
-
-</body>
-
-</html>
-
+@endsection

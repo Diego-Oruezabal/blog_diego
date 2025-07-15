@@ -1,66 +1,57 @@
-<!doctype html>
-<html lang="es">
+@extends('layouts.base')
 
-<head>
-    @include('partials.head')
-</head>
+@section('title', 'Blog - El Patrón Singleton')
 
- <body>
-
-    <!--loading -->
-    @include('partials.loading')
-
-    <!-- Header -->
-    @include('partials.header')
-
-    <main class="main">
-           <!--Banner-->
-            <section class="banner">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-8">
-
-                            @if(request('search'))
-                                <div class="alert alert-info">
-                                    Se encontraron <strong>{{ $allPosts->total() }}</strong> resultados para: <strong>"{{ request('search') }}"</strong>
-                                </div>
-                            @elseif(request('category'))
-                                <div class="alert alert-info">
-                                    Se encontraron <strong>{{ $allPosts->total() }}</strong> resultados en la categoría: <strong>"{{ ucfirst(request('category')) }}"</strong>
-                                </div>
-                            @elseif(request('tag'))
-                                <div class="alert alert-info">
-                                    Se encontraron <strong>{{ $allPosts->total() }}</strong> resultados con la etiqueta: <strong>"{{ ucfirst(request('tag')) }}"</strong>
-                                </div>
-
-                            @elseif(request('author'))
-                                @php
-                                    $authorName = \App\Models\User::find(request('author'))?->name ?? 'Autor desconocido';
-                                @endphp
-                                <div class="alert alert-info">
-                                    Se encontraron <strong>{{ $allPosts->total() }}</strong> resultados del autor: <strong>"{{ $authorName }}"</strong>
-                                </div>
-                            @endif
+@section('content')
 
 
+        <!--Banner-->
+        <section class="banner">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8">
 
-
-
-                            <div class="banner__content ">
-                                <small class="banner__meta">
-                                    <a href="/" class="banner__link">Inicio</a>
-                                    <i class="bi bi-caret-right-fill banner__icon"></i>Posts
-                                </small>
-                                <h3 class="banner__title">Últimos  <span class="banner__category-color"> Posts</span></h3>
-                                <p class="banner__subtitle"> Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Incidunt quae explicabo, ducimus necessitatibus eum aut enim modi
-                                    saepe perspiciatis fugit
-                                </p>
+                        @if(request('search'))
+                            <div class="alert alert-info">
+                                Se encontraron <strong>{{ $allPosts->total() }}</strong> resultados para: <strong>"{{ request('search') }}"</strong>
                             </div>
+                        @elseif(request('category'))
+                            <div class="alert alert-info">
+                                Se encontraron <strong>{{ $allPosts->total() }}</strong> resultados en la categoría: <strong>"{{ ucfirst(request('category')) }}"</strong>
+                            </div>
+                        @elseif(request('tag'))
+                            <div class="alert alert-info">
+                                Se encontraron <strong>{{ $allPosts->total() }}</strong> resultados con la etiqueta: <strong>"{{ ucfirst(request('tag')) }}"</strong>
+                            </div>
+
+                        @elseif(request('author'))
+                            @php
+                                $authorName = \App\Models\User::find(request('author'))?->name ?? 'Autor desconocido';
+                            @endphp
+                            <div class="alert alert-info">
+                                Se encontraron <strong>{{ $allPosts->total() }}</strong> resultados del autor: <strong>"{{ $authorName }}"</strong>
+                            </div>
+                        @endif
+
+
+
+
+
+                        <div class="banner__content ">
+                            <small class="banner__meta">
+                                <a href="/" class="banner__link">Inicio</a>
+                                <i class="bi bi-caret-right-fill banner__icon"></i>Posts
+                            </small>
+                            <h3 class="banner__title">Últimos  <span class="banner__category-color"> Posts</span></h3>
+                            <p class="banner__subtitle"> Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Incidunt quae explicabo, ducimus necessitatibus eum aut enim modi
+                                saepe perspiciatis fugit
+                            </p>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
         <!--post-default-->
         <section class="mt-30 mb-30">
             <div class="container-fluid">
@@ -211,16 +202,7 @@
 
         <!--newslettre-->
         @include('partials.newletter')
-    </main>
 
-    <!--footer-->
-    @include('partials.footer')
 
-    <!--Search-form-->
-    @include('partials.buscar')
-
-    <!--plugins -->
-    @include('partials.js')
-</body>
-</html>
+@endsection
 

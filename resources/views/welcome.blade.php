@@ -1,19 +1,8 @@
-<!doctype html>
-<html lang="es">
+@extends('layouts.base')
 
-<head>
-@include('partials.head')
-</head>
+@section('title', 'Blog - El Patrón Singleton')
 
-<body>
-    <!--loading -->
-    @include('partials.loading')
-
-    <!-- Header -->
-    @include('partials.header')
-    <!--/-->
-
-    <main class="main">
+@section('content')
         <!--slider-two-->
        <div class="slider slider--two">
         <div class="swiper slider__top">
@@ -80,9 +69,7 @@
                 @endforeach
             </div>
         </div>
-    </div>
-
-
+       </div>
 
         <!--blog-Home-2-->
         <section class="mt-90">
@@ -144,20 +131,7 @@
             </div>
         </section>
 
-
-
         <!--newslettre-->
        @include('partials.newletter')
-    </main>
+@endsection
 
-    <!--footer-->
-    @include('partials.footer')
-
-    <!--Search-form-->
-    @include('partials.buscar')
-
-    @include('partials.js')
-
-</body>
-
-</html>
