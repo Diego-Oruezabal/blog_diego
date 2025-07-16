@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 
 class PostController extends Controller
@@ -184,6 +185,75 @@ class PostController extends Controller
             $post->tags()->sync($request->tags);
 
             return redirect()->route('posts.list')->with('success', 'Publicación creada correctamente.');
+        }
+
+        public function edit(Post $post)
+        {
+            // Asegurar que el post pertenece al usuario autenticado
+            if ($post->user_id !== auth()->id()) {
+                abort(403);
+            }
+
+            $categories = Category::all();
+            $tags = Tag::all();
+
+            return view('blog.edit', compact('post', 'categories', 'tags'));
+        }
+
+
+        public function update(Request $request, Post $post)
+        {
+            if ($post->user_id !== auth()->id()) {
+                abort(403);
+            }
+
+            $request->validate([
+                'title' => 'required|string|max:255',
+                'summary' => 'required|string|max:500',
+                'content' => 'required|string',
+                'status' => 'required|in:published,draft',
+                'categories' => 'required|array',
+                'tags' => 'nullable|array',
+                'featured_image' => 'nullable|image|max:2048',
+            ]);
+
+            $post->title = $request->title;
+            $post->slug = Str::slug($request->title); // puede validar si cambia
+            $post->summary = $request->summary;
+            $post->content = $request->content;
+            $post->status = $request->status;
+            $post->published_at = $request->status === 'published' ? now() : null;
+
+            if ($request->hasFile('featured_image')) {
+                $path = $request->file('featured_image')->store('posts', 'public');
+                $post->featured_image = $path;
+            }
+
+            $post->save();
+
+            $post->categories()->sync($request->categories);
+            $post->tags()->sync($request->tags ?? []);
+
+            return redirect()->route('posts.list')->with('success', 'Publicación actualizada correctamente.');
+        }
+
+        public function destroy(Post $post)
+        {
+            // Asegurar que el usuario es el autor del post
+            if ($post->user_id !== auth()->id()) {
+                abort(403, 'No autorizado.');
+            }
+
+            // Eliminar imagen si existe
+            if ($post->featured_image) {
+                Storage::disk('public')->delete($post->featured_image);
+            }
+
+            $post->categories()->detach();
+            $post->tags()->detach();
+            $post->delete();
+
+            return redirect()->route('posts.list')->with('success', 'Publicación eliminada correctamente.');
         }
 
 
