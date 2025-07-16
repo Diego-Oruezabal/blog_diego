@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 
 class PostController extends Controller
 {
@@ -137,6 +139,51 @@ class PostController extends Controller
                         ->paginate(10);
 
             return view('blog.list', compact('posts'));
+        }
+
+        public function create()
+        {
+            $categories = Category::all();
+            $tags = Tag::all();
+
+            return view('blog.create', compact('categories', 'tags'));
+        }
+
+
+        public function store(Request $request)
+        {
+            $request->validate([
+                'title' => 'required|string|max:255',
+                'summary' => 'nullable|string|max:500',
+                'content' => 'required|string',
+                'categories' => 'required|array',
+                'tags' => 'nullable|array',
+                'featured_image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+                'status' => 'required|in:published,draft',
+            ]);
+
+            $post = new Post();
+            $post->user_id = auth()->id();
+            $post->title = $request->title;
+            $post->slug = Str::slug($request->title);
+            $post->summary = $request->summary;
+            $post->content = $request->content;
+            $post->status = $request->status;
+            $post->published_at = $request->status === 'published' ? now() : null;
+
+            // Guardar imagen si se sube
+            if ($request->hasFile('featured_image')) {
+                $path = $request->file('featured_image')->store('posts', 'public');
+                $post->featured_image = $path;
+            }
+
+            $post->save();
+
+            // Relacionar categorías y tags
+            $post->categories()->sync($request->categories);
+            $post->tags()->sync($request->tags);
+
+            return redirect()->route('posts.list')->with('success', 'Publicación creada correctamente.');
         }
 
 

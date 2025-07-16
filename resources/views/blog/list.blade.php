@@ -9,8 +9,14 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="banner__content ">
+                                @if (session('success'))
+                                    <div class="alert alert-success">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+
                            <h2 class="mb-4">Mis publicaciones</h2>
-                           <a href="#" class="mb-3 btn btn-primary">Crear nuevo post</a>
+                           <a href="{{ route('posts.create') }}" class="mb-3 btn btn-primary">Crear nuevo post</a>
 
                                     @if($posts->count())
                                         <table class="table table-striped">

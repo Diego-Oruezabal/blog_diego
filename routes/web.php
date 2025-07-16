@@ -6,6 +6,9 @@ use App\Http\Controllers\PostController;
 
 Route::middleware(['auth'])->group(function () {
      Route::get('/blog/list', [PostController::class, 'list'])->name('posts.list');
+     Route::get('/blog/create', [PostController::class, 'create'])->name('posts.create');
+     Route::post('/blog/store', [PostController::class, 'store'])->name('posts.store');
+
 });
 
 Route::get('/', function () {
