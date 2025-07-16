@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -126,6 +127,16 @@ class PostController extends Controller
             $latestPosts = Post::latest('published_at')->with('user')->take(4)->get();
 
             return view('blog.index', compact('allPosts', 'allCategories', 'latestPosts', 'tags', 'tag'));
+        }
+
+        public function list()
+        {
+            $posts = Post::with(['categories', 'tags'])
+                        ->where('user_id', Auth::id())
+                        ->latest('published_at')
+                        ->paginate(10);
+
+            return view('blog.list', compact('posts'));
         }
 
 

@@ -36,7 +36,8 @@
                                       <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false"> {{ auth()->user()->name }} </a>
                                         <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">Nuevo post</a></li>
+                                            <li><a href="{{ route('posts.list') }}" class="dropdown-item">Mis publicaciones</a>
+                                            </li>
                                             <li><a class="dropdown-item" href="#">Perfil</a></li>
                                             <li>
                                                 <form method="POST" action="{{ route('logout') }}">
