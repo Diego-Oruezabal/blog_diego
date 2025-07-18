@@ -89,7 +89,7 @@
                                                 <ul class="post-card__meta list-inline">
                                                     <li class="post-card__meta-item">
                                                         <a href="{{ route('blog.index', ['author' => $post->user->id]) }}" class="post-card__meta-link">
-                                                            <img src="{{ asset('assets/img/author/diego.png') }}" alt="{{ $post->user->name }}" class="post-card__meta-img">
+                                                            <img src="{{ $post->user->profile_image ? asset('storage/' . $post->user->profile_image) : asset('assets/img/author/default.png') }}" alt="{{ $post->user->name }}" class="post-card__meta-img">
                                                         </a>
                                                     </li>
                                                     <li class="post-card__meta-item">

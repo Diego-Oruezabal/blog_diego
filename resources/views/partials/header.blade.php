@@ -38,7 +38,7 @@
                                         <ul class="dropdown-menu">
                                             <li><a href="{{ route('posts.list') }}" class="dropdown-item">Mis publicaciones</a>
                                             </li>
-                                            <li><a class="dropdown-item" href="#">Perfil</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Perfil</a></li>
                                             <li>
                                                 <form method="POST" action="{{ route('logout') }}">
                                                     @csrf
