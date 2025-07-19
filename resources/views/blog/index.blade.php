@@ -43,9 +43,7 @@
                                 <i class="bi bi-caret-right-fill banner__icon"></i>Posts
                             </small>
                             <h3 class="banner__title">Últimos  <span class="banner__category-color"> Posts</span></h3>
-                            <p class="banner__subtitle"> Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Incidunt quae explicabo, ducimus necessitatibus eum aut enim modi
-                                saepe perspiciatis fugit
+                            <p class="banner__subtitle"> Aquí se muestran las ultimas publicaciones del blog, puedes navegar por categorías, etiquetas o buscar contenido específico utilizando el formulario de búsqueda.</p>
                             </p>
                         </div>
                     </div>

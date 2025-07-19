@@ -31,10 +31,6 @@ Route::get('/blog/categoria/{slug}', [PostController::class, 'byCategory'])->nam
 Route::get('/blog/etiqueta/{slug}', [PostController::class, 'byTag'])->name('posts.byTag');
 
 
-
-
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -46,6 +42,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
+Route::view('/terminos', 'legal.terms')->name('legal.terms');
 
 
 require __DIR__.'/auth.php';

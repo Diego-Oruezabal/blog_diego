@@ -33,7 +33,7 @@
                                     <div class="widget__form-controls-checkbox">
                                         <input type="checkbox" class="widget__form-controls-input" id="terms" required>
                                         <label class="widget__form-controls-label" for="terms">
-                                            Acepto los <a href="#" class="widget__form-link">términos y condiciones</a>
+                                            Acepto los <a href="{{ route('legal.terms') }}" class="widget__form-link">términos y condiciones</a>
                                         </label>
                                     </div>
                                 </div>
