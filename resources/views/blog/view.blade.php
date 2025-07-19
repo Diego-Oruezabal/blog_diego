@@ -28,7 +28,7 @@
         <ul class="post-single__meta list-inline">
             <li class="post-single__meta-item">
                 <a href="{{ route('blog.index', ['author' => $post->user->id]) }}">
-                    <img src="{{ asset('assets/img/author/diego.png') }}" alt="{{ $post->user->name }}" class="post-single__meta-img">
+                    <img src="{{ $post->user->profile_image ? asset('storage/' . $post->user->profile_image) : asset('assets/img/author/default.png') }}" alt="{{ $post->user->name }}" alt="{{ $post->user->name }}" class="post-single__meta-img">
                 </a>
             </li>
             <li class="post-single__meta-item">
@@ -57,58 +57,58 @@
     </div>
 </div>
 
-                            <!--Related-posts-->
-                            <div class="row">
-                                {{-- Post anterior --}}
-                                @if($previousPost)
-                                    <div class="col-md-6">
-                                        <div class="widget">
-                                            <div class="widget__related-post">
-                                                <div class="widget__related-post__image">
-                                                    <a href="{{ url($previousPost->id . '/' . $previousPost->slug) }}">
-                                                        <img src="{{ asset('storage/' . $previousPost->featured_image) }}" alt="{{ $previousPost->title }}" class="widget__related-post__img">
+                        <!--Related-posts-->
+                        <div class="row">
+                            {{-- Post anterior --}}
+                            @if($previousPost)
+                                <div class="col-md-6">
+                                    <div class="widget">
+                                        <div class="widget__related-post">
+                                            <div class="widget__related-post__image">
+                                                <a href="{{ url($previousPost->id . '/' . $previousPost->slug) }}">
+                                                    <img src="{{ asset('storage/' . $previousPost->featured_image) }}" alt="{{ $previousPost->title }}" class="widget__related-post__img">
+                                                </a>
+                                            </div>
+                                            <div class="widget__related-post__content">
+                                                <a class="btn-link" href="{{ url($previousPost->id . '/' . $previousPost->slug) }}">
+                                                    <i class="bi bi-arrow-left"></i> Previous post
+                                                </a>
+                                                <p class="widget__related-post__title">
+                                                    <a href="{{ url($previousPost->id . '/' . $previousPost->slug) }}" class="widget__related-post__link">
+                                                        {{ Str::limit($previousPost->title, 60) }}
                                                     </a>
-                                                </div>
-                                                <div class="widget__related-post__content">
-                                                    <a class="btn-link" href="{{ url($previousPost->id . '/' . $previousPost->slug) }}">
-                                                        <i class="bi bi-arrow-left"></i> Previous post
-                                                    </a>
-                                                    <p class="widget__related-post__title">
-                                                        <a href="{{ url($previousPost->id . '/' . $previousPost->slug) }}" class="widget__related-post__link">
-                                                            {{ Str::limit($previousPost->title, 60) }}
-                                                        </a>
-                                                    </p>
-                                                </div>
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
-                                @endif
+                                </div>
+                            @endif
 
-                                {{-- Post siguiente --}}
-                                @if($nextPost)
-                                    <div class="col-md-6">
-                                        <div class="widget">
-                                            <div class="widget__related-post">
-                                                <div class="widget__related-post__image">
-                                                    <a href="{{ url($nextPost->id . '/' . $nextPost->slug) }}">
-                                                        <img src="{{ asset('storage/' . $nextPost->featured_image) }}" alt="{{ $nextPost->title }}" class="widget__related-post__img">
+                            {{-- Post siguiente --}}
+                            @if($nextPost)
+                                <div class="col-md-6">
+                                    <div class="widget">
+                                        <div class="widget__related-post">
+                                            <div class="widget__related-post__image">
+                                                <a href="{{ url($nextPost->id . '/' . $nextPost->slug) }}">
+                                                    <img src="{{ asset('storage/' . $nextPost->featured_image) }}" alt="{{ $nextPost->title }}" class="widget__related-post__img">
+                                                </a>
+                                            </div>
+                                            <div class="widget__related-post__content">
+                                                <a class="btn-link" href="{{ url($nextPost->id . '/' . $nextPost->slug) }}">
+                                                    Next post <i class="bi bi-arrow-right"></i>
+                                                </a>
+                                                <p class="widget__related-post__title">
+                                                    <a href="{{ url($nextPost->id . '/' . $nextPost->slug) }}" class="widget__related-post__link">
+                                                        {{ Str::limit($nextPost->title, 60) }}
                                                     </a>
-                                                </div>
-                                                <div class="widget__related-post__content">
-                                                    <a class="btn-link" href="{{ url($nextPost->id . '/' . $nextPost->slug) }}">
-                                                        Next post <i class="bi bi-arrow-right"></i>
-                                                    </a>
-                                                    <p class="widget__related-post__title">
-                                                        <a href="{{ url($nextPost->id . '/' . $nextPost->slug) }}" class="widget__related-post__link">
-                                                            {{ Str::limit($nextPost->title, 60) }}
-                                                        </a>
-                                                    </p>
-                                                </div>
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
-                                @endif
-                            </div>
+                                </div>
+                            @endif
+                        </div>
 
 
 
@@ -122,7 +122,7 @@
                                 <div class="widget__author">
                                     <div class="widget__author-top">
                                         <a href="{{ route('blog.index', ['author' => $post->user->id]) }}" class="widget__author-link">
-                                            <img src="{{ asset('assets/img/author/diego.png') }}" alt="{{ $post->user->name }}" class="widget__author-img">
+                                            <img src="{{ $post->user->profile_image ? asset('storage/' . $post->user->profile_image) : asset('assets/img/author/default.png') }}" alt="{{ $post->user->name }}" class="widget__author-img">
                                         </a>
                                     </div>
                                     <div class="widget__author-content">
