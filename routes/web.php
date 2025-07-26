@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CKEditorController;
 
 Route::middleware(['auth'])->group(function () {
      Route::get('/blog/list', [PostController::class, 'list'])->name('posts.list');
@@ -43,6 +44,10 @@ Route::middleware('auth')->group(function () {
 
 
 Route::view('/terminos', 'legal.terms')->name('legal.terms');
+
+Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
+
+
 
 
 require __DIR__.'/auth.php';

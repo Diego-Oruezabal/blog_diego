@@ -34,10 +34,11 @@
                                         <textarea name="summary" class="form-control">{{ old('summary') }}</textarea>
                                     </div>
 
-                                    <div class="mb-3">
+                                   <div class="mb-3">
                                         <label for="content" class="form-label">Contenido</label>
-                                        <textarea name="content" class="form-control" rows="8" required>{{ old('content') }}</textarea>
+                                        <textarea name="content" id="editor" class="form-control" rows="8" required>{{ old('content') }}</textarea>
                                     </div>
+
 
                                   <div class="mb-3">
                                     <label class="form-label">Categorías</label>
@@ -93,4 +94,14 @@
             </div>
         </section>
         @include('partials.newletter')
+
+
+        <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+        <script>
+            CKEDITOR.replace('editor', {
+                filebrowserUploadUrl: "{{ route('ckeditor.upload') }}",
+                filebrowserUploadMethod: 'form'
+            });
+        </script>
+
 @endsection
