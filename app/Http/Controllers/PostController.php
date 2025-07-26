@@ -41,6 +41,8 @@ class PostController extends Controller
 
                 $allCategories = Category::withCount('posts')->orderBy('name')->get();
 
+
+
                 // Post anterior (menor ID publicado)
                 $previousPost = Post::where('id', '<', $post->id)
                     ->orderBy('id', 'desc')
@@ -50,8 +52,6 @@ class PostController extends Controller
                 $nextPost = Post::where('id', '>', $post->id)
                     ->orderBy('id')
                     ->first();
-
-
 
                 return view('blog.view', compact('post', 'latestPosts', 'allCategories', 'previousPost', 'nextPost'));
             }
@@ -165,12 +165,12 @@ class PostController extends Controller
 
             $post = new Post();
             $post->user_id = auth()->id();
-            $post->title = $request->title;
-            $post->slug = Str::slug($request->title);
-            $post->summary = $request->summary;
-            $post->content = $request->content;
-            $post->status = $request->status;
-            $post->published_at = $request->status === 'published' ? now() : null;
+            $post->title = $request->input('title');
+            $post->slug = Str::slug($request->input('title'));
+            $post->summary = $request->input('summary');
+            $post->content = $request->input('content');
+            $post->status = $request->input('status');
+            $post->published_at = $request->input('status') === 'published' ? now() : null;
 
             // Guardar imagen si se sube
             if ($request->hasFile('featured_image')) {
@@ -181,8 +181,8 @@ class PostController extends Controller
             $post->save();
 
             // Relacionar categorías y tags
-            $post->categories()->sync($request->categories);
-            $post->tags()->sync($request->tags);
+            $post->categories()->sync($request->input('categories'));
+            $post->tags()->sync($request->input('tags', []));
 
             return redirect()->route('posts.list')->with('success', 'Publicación creada correctamente.');
         }
@@ -217,12 +217,12 @@ class PostController extends Controller
                 'featured_image' => 'nullable|image|max:2048',
             ]);
 
-            $post->title = $request->title;
-            $post->slug = Str::slug($request->title); // puede validar si cambia
-            $post->summary = $request->summary;
-            $post->content = $request->content;
-            $post->status = $request->status;
-            $post->published_at = $request->status === 'published' ? now() : null;
+            $post->title = $request->input('title');
+            $post->slug = Str::slug($request->input('title')); // puede validar si cambia
+            $post->summary = $request->input('summary');
+            $post->content = $request->input('content');
+            $post->status = $request->input('status');
+            $post->published_at = $request->input('status ') === 'published' ? now() : null;
 
             if ($request->hasFile('featured_image')) {
                 $path = $request->file('featured_image')->store('posts', 'public');
@@ -231,7 +231,7 @@ class PostController extends Controller
 
             $post->save();
 
-            $post->categories()->sync($request->categories);
+            $post->categories()->sync($request->input('categories'));
             $post->tags()->sync($request->tags ?? []);
 
             return redirect()->route('posts.list')->with('success', 'Publicación actualizada correctamente.');
