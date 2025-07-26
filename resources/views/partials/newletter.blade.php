@@ -4,8 +4,8 @@
                     <div class="m-auto col-lg-6 col-md-10 col-sm-11">
                         <div class="newslettre">
                         <div class="newslettre__info">
-                            <h3 class="newslettre__title">Explora ideas, historias y consejos que inspiran</h3>
-                            <p class="newslettre__desc">Sumérgete en artículos seleccionados especialmente para ti. ¡Bienvenido a nuestra comunidad!</p>
+                            <h3 class="newslettre__title">Descubre artículos únicos sobre desarrollo, tecnología y más</h3>
+                            <p class="newslettre__desc">Explora contenidos creados con pasión para ayudarte a crecer como desarrollador y emprendedor. ¡Gracias por formar parte de este proyecto!</p>
                         </div>
 
 

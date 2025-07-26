@@ -7,7 +7,7 @@
 <link rel="icon" sizes="16x16" href="{{ asset('assets/img/favicon.png') }}">
 
 <!-- Title -->
-<title> DiegoOruezabal | BLOG </title>
+<title> El Patrón Singleton </title>
 
 <!-- Stylesheets -->
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}">

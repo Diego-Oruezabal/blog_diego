@@ -4,7 +4,7 @@
                 <div class="col-lg-12">
                     <div class="footer__copyright">
                         <p class="footer__copyright-text">© Copyright {{ date('Y') }}
-                            <a href="#" class="footer__copyright-link">Diego Oruezabal</a>, All rights reserved.
+                            <a href="#" class="footer__copyright-link">El Patrón Singleton</a>, All rights reserved.
                         </p>
                     </div>
                     <div class="btn-back-top">
