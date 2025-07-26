@@ -26,11 +26,13 @@
                                                         <textarea name="summary" class="form-control" rows="2" required>{{ old('summary', $post->summary) }}</textarea>
                                                     </div>
 
-                                                    {{-- Contenido --}}
+                                                   {{-- Contenido --}}
                                                     <div class="mb-3">
                                                         <label for="content" class="form-label">Contenido</label>
-                                                        <textarea name="content" class="form-control" rows="8" required>{{ old('content', $post->content) }}</textarea>
+                                                        <textarea name="content" id="content" class="form-control" rows="8" required>{{ old('content', $post->content) }}</textarea>
                                                     </div>
+
+
 
                                                     {{-- Imagen destacada --}}
                                                     <div class="mb-3">
@@ -96,4 +98,11 @@
         </section>
 
         @include('partials.newletter')
+
+        <!-- CKEditor CDN -->
+<script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('content');
+</script>
+
 @endsection
