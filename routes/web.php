@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CKEditorController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TagController;
 
 Route::middleware(['auth'])->group(function () {
      Route::get('/blog/list', [PostController::class, 'list'])->name('posts.list');
@@ -20,7 +22,7 @@ Route::get('/', function () {
 
 Route::get('/', [PostController::class, 'index'])->name('home');
 
-Route::get('{id}/{slug}', [PostController::class, 'show'])->name('posts.show');
+
 
 Route::get('/blog', [PostController::class, 'listAll'])->name('blog.index');
 
@@ -47,7 +49,11 @@ Route::view('/terminos', 'legal.terms')->name('legal.terms');
 
 Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
 
+Route::resource('categories', CategoryController::class);
+Route::resource('tags', TagController::class);
 
+
+Route::get('{id}/{slug}', [PostController::class, 'show'])->name('posts.show');
 
 
 require __DIR__.'/auth.php';

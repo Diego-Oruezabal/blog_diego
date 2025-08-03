@@ -13,29 +13,31 @@
                             <div class="about-us__image">
                                 <img src="{{ asset('assets/img/pic/about-us.jpg') }}" alt="Diego Oruezábal" class="about-us__img">
                             </div>
-                            <div class="about-us__description">
+                           <div class="about-us__description">
                                 <p class="about-us__description-text">
-                                    ¡Hola! Bienvenido a El Patrón Singleton. Soy Diego O., desarrollador fullstack y entusiasta de la tecnología con un gran interés en la programación y el mundo empresarial.
+                                    ¡Hola! Bienvenido a <strong>El Patrón Singleton</strong>. Soy Diego O., desarrollador fullstack con formación en negocios, apasionado por la tecnología, la programación y el pensamiento estratégico.
                                 </p>
                                 <p class="about-us__description-text">
-                                    Este blog nace de la idea de compartir conocimientos, experiencias, herramientas y reflexiones sobre el mundo del desarrollo, así como sobre finanzas personales, inversión a largo plazo, economía y crecimiento profesional.
+                                    Este blog nace con la intención de compartir conocimientos, experiencias y herramientas útiles que he ido descubriendo en el mundo del desarrollo web, así como reflexiones sobre finanzas personales, inversión a largo plazo, economía y crecimiento profesional.
                                 </p>
                                 <p class="about-us__description-text">
-                                    Me apasiona escribir código limpio, estructurado y funcional. También creo en el poder de la educación financiera como una herramienta de libertad.
+                                    Me apasiona escribir código limpio, bien estructurado y con propósito. Creo firmemente en la educación financiera como una vía para ganar autonomía, tomar mejores decisiones y construir un futuro más libre y consciente.
                                 </p>
                                 <div class="about-us__qoute">
                                     <i class="bi bi-quote about-us__qoute-icon"></i>
                                     <h3 class="about-us__qoute-item">
-                                        "Invertir en uno mismo es el mejor proyecto de código abierto que puedes mantener."
+                                        “Invertir en uno mismo es el proyecto de código abierto más valioso que puedes desarrollar.”
                                     </h3>
-                                    <small class="about-us__qoute-author">Diego Oruezábal</small>
+                                    <small class="about-us__qoute-author">Diego O.</small>
                                 </div>
                                 <p class="about-us__description-text">
-                                    En este espacio encontrarás artículos técnicos, recursos útiles, ideas para automatizar tareas, y también publicaciones sobre cómo construir un futuro financiero más estable desde la perspectiva de alguien que programa, invierte y aprende cada día.
+                                    Aquí encontrarás artículos técnicos, ideas para automatizar tareas, recursos para mejorar tu productividad como desarrollador, y también contenido sobre cómo tomar el control de tus finanzas desde la perspectiva de alguien que programa, invierte y nunca deja de aprender.
                                 </p>
                                 <p class="about-us__description-text">
-                                    Gracias por pasar por aquí. Si quieres contactar conmigo o colaborar en algo interesante, no dudes en escribirme.
+                                    Gracias por pasarte por aquí. Si te interesa colaborar, tienes ideas que quieras compartir o simplemente quieres conversar, estaré encantado de leerte.
                                 </p>
+                            </div>
+
                             </div>
                         </div>
                     </div>
