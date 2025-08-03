@@ -99,9 +99,13 @@
         <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
         <script>
             CKEDITOR.replace('editor', {
+                height: 500,
                 filebrowserUploadUrl: "{{ route('ckeditor.upload') }}",
                 filebrowserUploadMethod: 'form'
             });
         </script>
 
 @endsection
+
+
+
