@@ -1,8 +1,8 @@
 ﻿/* -----------------------------------------------
-				CSS Styles 
+				CSS Styles
 --------------------------------------------------
 
-    Template Name: NoonPost. - Personal Blog HTML Template 
+    Template Name: NoonPost. - Personal Blog HTML Template
 
 --------------------------------------------------
 
@@ -17,9 +17,9 @@ Table of Content
     - Post-single
     - Sliders
     - About
-    - Contact 
+    - Contact
     - Footer
-	- Preloader 
+	- Preloader
     - Responsive
     - Dark
 
@@ -1303,7 +1303,7 @@ ul {
 }
 
 /* ------------------------------
-		 Post-card  
+		 Post-card
 ------------------------------ */
 .post-card {
   background-color: #ffffff;
@@ -2338,7 +2338,7 @@ ul {
 }
 
 /* -----------------------------
-		 Preloader 
+		 Preloader
 --------------------------------- */
 .loading {
   position: fixed;
@@ -2373,7 +2373,7 @@ ul {
   }
 }
 /* ------------------------------
-		 Responsive 
+		 Responsive
 ------------------------------ */
 @media screen and (max-width: 1400px) {
   .container-wrap {
@@ -2778,4 +2778,12 @@ ul {
 }
 .dark ::placeholder {
   color: #d9d9d9 !important;
+}
+
+
+
+.logo__image {
+    height: 4em;
+    margin-right: 5px;
+    vertical-align: -1.4em;
 }

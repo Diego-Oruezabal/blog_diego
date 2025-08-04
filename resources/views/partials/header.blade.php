@@ -4,9 +4,11 @@
               <!-- logo -->
                 <div class="logo">
                     <a class="logo__link logo--dark" href="{{ url('/') }}">
+                         <img src="{{ asset('assets/img/logo/logo_negro_patron_singleton.png') }}" alt="Logo oscuro" class="logo__image">
                         <span class="logo__text logo__text--dark">EL PATRON SINGLETON</span>
                     </a>
                     <a class="logo__link logo--light" href="{{ url('/') }}">
+                        <img src="{{ asset('assets/img/logo/logo_blanco_patron_singleton.png') }}" alt="Logo blanco" class="logo__image">
                         <span class="logo__text logo__text--light">EL PATRON SINGLETON</span>
                     </a>
                 </div>
@@ -39,6 +41,15 @@
                                             <li><a href="{{ route('posts.list') }}" class="dropdown-item">Mis publicaciones</a>
                                             </li>
                                             <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Perfil</a></li>
+
+                                            {{-- Opciones de administrador --}}
+                                            @role('admin')
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item" href="{{ route('categories.index') }}">Categorías</a></li>
+                                                <li><a class="dropdown-item" href="{{ route('tags.index') }}">Etiquetas</a></li>
+                                            @endrole
+                                                <li><hr class="dropdown-divider"></li>
+
                                             <li>
                                                 <form method="POST" action="{{ route('logout') }}">
                                                     @csrf
