@@ -4,7 +4,7 @@
                     <div class="m-auto col-lg-6 col-md-10 col-sm-11">
                         <div class="newslettre">
                         <div class="newslettre__info">
-                            <h3 class="newslettre__title">Descubre artículos únicos sobre desarrollo, tecnología y más</h3>
+                            <h3 class="newslettre__title">Descubre artículos únicos sobre desarrollo, tecnología, economía y más</h3>
                             <p class="newslettre__desc">Explora contenidos creados con pasión para ayudarte a crecer como desarrollador y emprendedor. ¡Gracias por formar parte de este proyecto!</p>
                         </div>
 
