@@ -172,20 +172,20 @@ class PostController extends Controller
             $post->status = $request->status;
             $post->published_at = $request->status === 'published' ? now() : null;
 
-            // Guardar imagen si se sube
             if ($request->hasFile('featured_image')) {
-                $path = $request->file('featured_image')->store('posts', 'public');
-                $post->featured_image = $path;
+                $filename = time() . '.' . $request->file('featured_image')->extension();
+                $request->file('featured_image')->move(public_path('storage/posts'), $filename);
+                $post->featured_image = 'posts/' . $filename; // ¡IMPORTANTE!
             }
 
             $post->save();
 
-            // Relacionar categorías y tags
             $post->categories()->sync($request->categories);
             $post->tags()->sync($request->tags);
 
             return redirect()->route('posts.list')->with('success', 'Publicación creada correctamente.');
         }
+
 
         public function edit(Post $post)
         {
@@ -202,40 +202,42 @@ class PostController extends Controller
 
 
         public function update(Request $request, Post $post)
-        {
-            if ($post->user_id !== auth()->id()) {
-                abort(403);
+            {
+                if ($post->user_id !== auth()->id()) {
+                    abort(403);
+                }
+
+                $request->validate([
+                    'title' => 'required|string|max:255',
+                    'summary' => 'required|string|max:500',
+                    'content' => 'required|string',
+                    'status' => 'required|in:published,draft',
+                    'categories' => 'required|array',
+                    'tags' => 'nullable|array',
+                    'featured_image' => 'nullable|image|max:2048',
+                ]);
+
+                $post->title = $request->title;
+                $post->slug = Str::slug($request->title);
+                $post->summary = $request->summary;
+                $post->content = $request->content;
+                $post->status = $request->status;
+                $post->published_at = $request->status === 'published' ? now() : null;
+
+                if ($request->hasFile('featured_image')) {
+                    $filename = time() . '.' . $request->file('featured_image')->extension();
+                    $request->file('featured_image')->move(public_path('storage/posts'), $filename);
+                    $post->featured_image = 'posts/' . $filename;
+                }
+
+                $post->save();
+
+                $post->categories()->sync($request->categories);
+                $post->tags()->sync($request->tags ?? []);
+
+                return redirect()->route('posts.list')->with('success', 'Publicación actualizada correctamente.');
             }
 
-            $request->validate([
-                'title' => 'required|string|max:255',
-                'summary' => 'required|string|max:500',
-                'content' => 'required|string',
-                'status' => 'required|in:published,draft',
-                'categories' => 'required|array',
-                'tags' => 'nullable|array',
-                'featured_image' => 'nullable|image|max:2048',
-            ]);
-
-            $post->title = $request->title;
-            $post->slug = Str::slug($request->title); // puede validar si cambia
-            $post->summary = $request->summary;
-            $post->content = $request->content;
-            $post->status = $request->status;
-            $post->published_at = $request->status === 'published' ? now() : null;
-
-            if ($request->hasFile('featured_image')) {
-                $path = $request->file('featured_image')->store('posts', 'public');
-                $post->featured_image = $path;
-            }
-
-            $post->save();
-
-            $post->categories()->sync($request->categories);
-            $post->tags()->sync($request->tags ?? []);
-
-            return redirect()->route('posts.list')->with('success', 'Publicación actualizada correctamente.');
-        }
 
         public function destroy(Post $post)
         {
