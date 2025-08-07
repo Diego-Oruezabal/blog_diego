@@ -74,7 +74,7 @@
                 <!-- header actions -->
                 <div class=" header__action-items">
                     <!--header-social-->
-                    <ul class="list-inline social-media social-media--layout-one">
+                 <!--   <ul class="list-inline social-media social-media--layout-one">
                         <li class="social-media__item">
                             <a href="{{ config('app.social.facebook') }}" class="social-media__link" target="_blank">
                                 <i class="bi bi-facebook"></i>
@@ -91,7 +91,26 @@
                             <a href="{{ config('app.social.youtube') }}" class="social-media__link" target="_blank">
                                 <i class="bi bi-youtube"></i>
                             </a>
+                        </li>-->
+                        <!-- WhatsApp -->
+                        <li class="social-media__item">
+                            <a href="{{ config('app.social.whatsapp') }}" class="social-media__link" target="_blank">
+                                <i class="bi bi-whatsapp"></i>
+                            </a>
                         </li>
+
+                        <!-- Telegram -->
+                        <li class="social-media__item">
+                            <a href="{{ config('app.social.telegram') }}" class="social-media__link" target="_blank">
+                                <i class="bi bi-telegram"></i>
+                            </a>
+                        </li>
+                        <!-- Email -->
+                        <li class="social-media__item">
+                            <a href="mailto:{{ config('app.social.email') }}" class="social-media__link" target="_blank">
+                                <i class="bi bi-envelope-fill"></i>
+                            </a>
+                         </li>
                     </ul>
 
 

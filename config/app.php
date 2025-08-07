@@ -189,6 +189,9 @@ return [
         'facebook' => env('SOCIAL_FACEBOOK'),
         'instagram' => env('SOCIAL_INSTAGRAM'),
         'youtube' => env('SOCIAL_YOUTUBE'),
+        'whatsapp' => env('SOCIAL_WHATSAPP'),
+        'telegram' => env('SOCIAL_TELEGRAM'),
+        'email' => env('SOCIAL_EMAIL'),
     ],
 
 

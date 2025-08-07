@@ -10,6 +10,7 @@
 
 
                             <ul class="list-inline social-media social-media--layout-three">
+                                 <!--
                                 <li class="social-media__item">
                                     <a href="{{ config('app.social.facebook') }}" target="_blank" class="social-media__link">
                                         <i class="bi bi-facebook"></i>Facebook
@@ -27,8 +28,28 @@
                                         <i class="bi bi-youtube"></i>Youtube
                                     </a>
                                 </li>
-                            </ul>
 
+                            -->
+                             <!-- WhatsApp -->
+                        <li class="social-media__item">
+                            <a href="{{ config('app.social.whatsapp') }}" class="social-media__link" target="_blank">
+                                <i class="bi bi-whatsapp"> Whatsaap</i>
+                            </a>
+                        </li>
+
+                        <!-- Telegram -->
+                        <li class="social-media__item">
+                            <a href="{{ config('app.social.telegram') }}" class="social-media__link" target="_blank">
+                                <i class="bi bi-telegram"> Telegram</i>
+                            </a>
+                        </li>
+                        <!-- Email -->
+                        <li class="social-media__item">
+                            <a href="mailto:{{ config('app.social.email') }}" class="social-media__link" target="_blank">
+                                <i class="bi bi-envelope-fill"> Email</i>
+                            </a>
+                         </li>
+                        </ul>
 
 
                         </div>

@@ -15,7 +15,7 @@
                             </div>
                            <div class="about-us__description">
                                 <p class="about-us__description-text">
-                                    ¡Hola! Bienvenido a <strong>El Patrón Singleton</strong>. Soy Diego, desarrollador fullstack, aprendiz eterno, y (según mis amigos) una mezcla rara entre programador, economista y estratega estilo Sun Tzu.
+                                    ¡Hola! Bienvenido a <strong>El Patrón Singleton</strong>. Soy Diego, desarrollador fullstack, y (según mis amigos) una mezcla rara entre programador, economista y estratega estilo Sun Tzu.
                                 </p>
                                 <p class="about-us__description-text">
                                     Este blog es mi laboratorio personal: un espacio donde comparto lo que voy aprendiendo en el mundo del desarrollo web (Laravel, Next.js, Angular y lo que se me cruce), además de ideas sobre inversión, productividad, economía y cómo sobrevivir en el mundo tech sin perder la cabeza (ni el foco).
